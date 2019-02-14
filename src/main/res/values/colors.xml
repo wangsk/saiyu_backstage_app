@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="background">#31373a</color>
+
+    <!--黑-->
+    <color name="black20">#20000000</color>
+    <color name="black40">#40000000</color>
+    <color name="black60">#60000000</color>
+    <color name="black80">#99000000</color>
+    <color name="black99">#000000</color>
+    <color name="black">#444444</color>
+
+    <color name="blue">#31908f</color>
+
+    <color name="unEnabled">#aeaeae</color>
+
+    <color name="yellow">#fe8f62</color>
+
+    <color name="grey">#8C8C8C</color>
+
+    <color name="red">#dd6666</color>
+
+    <color name="list_text_lighter">#666666 </color>
+    <color name="list_text_deep">#333333</color>
+
+    <color name="button_bg">#fe8f62</color>
+
+    <color name="grey_white">#c3c3c3</color>
+
+    <!--粉色-->
+    <color name="pink">#FF8484</color>
+
+    <!-- ReBulid -->
+    <!--//换肤颜色-->
+    <!--最浅色-->
+    <color name="colorLighter">#e8f8fc</color>
+    <!--深色-->
+    <color name="colorDeep">#4ccae5</color>
+    <!--最深色-->
+    <color name="colorDeeper">#1fbddf</color>
+
+    <drawable name="windowBackground">#00000000</drawable>
+
+</resources>

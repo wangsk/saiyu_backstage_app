@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+def AAVersion = '4.4.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        // replace with the current version of the Android plugin
+        classpath 'com.android.tools.build:gradle:3.1.4'
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+android {
+
+    signingConfigs {
+        jingyeqian {
+            keyAlias 'YuSai1641'
+            keyPassword 'YuSai1641&*(workLIqia'
+            storeFile file('D:/mykey/saiyuserver.jks')
+            storePassword 'YuSai1641&*(workLIqia'
+        }
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+    }
+
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.saiyu.transactions"
+        minSdkVersion 24
+        targetSdkVersion 27
+        versionCode 2
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库（不需要的删除即可）。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "41c5b16cde55bbb49c1b3591", //JPush上注册的包名对应的appkey（*换成你的*）
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+
+                XG_ACCESS_ID:"2100326819",
+                XG_ACCESS_KEY:"A16XZ6BAA34I",
+        ]
+
+        vectorDrawables.useSupportLibrary = true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir { dirs 'src/main/libs' }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //极光推送(暂时只用信鸽推送)
+//    implementation 'cn.jiguang.sdk:jpush:3.1.1'
+    // 此处以JPush 3.1.1 版本为例。
+//    implementation 'cn.jiguang.sdk:jcore:1.1.9'
+    // 此处以JCore 1.1.9 版本为例
+    //结构嵌套
+    implementation 'me.yokeyword:fragmentation:1.3.6'
+    //网络请求框架//版本号使用 + 可以自动引用最新版
+    implementation 'com.zhy:okhttputils:2.6.2'
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14-RC1'
+    implementation 'io.reactivex:rxandroid:1.2.0'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.1@aar'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.android.support:recyclerview-v7:27.0.0'
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.0.4'
+    implementation 'com.android.support:design:27.+'
+
+
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    //注解框架
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
+
+    //信鸽普通版本jar，不包含厂商通道
+    implementation  'com.tencent.xinge:xinge:4.0.5-release'
+    //implementation'com.tencent.xinge:xinge:4.3.1-beta'
+    //jg包
+    implementation'com.tencent.jg:jg:1.1'
+    //wup包
+    implementation 'com.tencent.wup:wup:1.0.0.E-release'
+    //mid包，minSdkVersion 14
+    implementation 'com.tencent.mid:mid:4.0.7-Release'
+
+}
